@@ -66,7 +66,21 @@ fun MainScreen(navController: NavController, vm: IgViewModel) {
                     )
                 )
         ) {
-
+            Button(onClick = {
+                navController.navigate(DestinationScreen.Login.route)
+            },
+                colors = ButtonDefaults.buttonColors(
+                    Color.Transparent
+                ),
+                modifier = Modifier.width(300.dp)
+            ) {
+                Text(
+                    text = "Log In",
+                    color = Color.Black,
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
         }
     }
 }
