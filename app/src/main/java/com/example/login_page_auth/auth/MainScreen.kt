@@ -33,5 +33,40 @@ import com.example.login_page_auth.R
 
 @Composable
 fun MainScreen(navController: NavController, vm: IgViewModel) {
+    Image(
+        painter = painterResource(id = R.drawable.bl),
+        contentDescription = null,
+        contentScale = ContentScale.FillBounds,
+        modifier = Modifier.fillMaxSize()
+    )
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 100.dp)
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.em),
+            contentDescription = null,
+            Modifier.size(200.dp)
+        )
+        Text(
+            text = "Welcome",
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
+            fontSize = 40.sp
+        )
+        Spacer(modifier = Modifier.height(80.dp))
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(50.dp))
+                .background(
+                    brush = Brush.horizontalGradient(
+                        colors = listOf(Color(0xFFFFD700), Color.White, Color(0xFFFFD700))
+                    )
+                )
+        ) {
 
+        }
+    }
 }
