@@ -34,3 +34,26 @@ class IgViewModel @Inject constructor(
     }
 
 
+    fun login(email: String, pass: String) {
+        inProgress.value = true
+
+        auth.signInWithEmailAndPassword(email, pass)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    signedIn.value = true
+                    handleException(it.exception, "login successful")
+                } else {
+                    handleException(it.exception, "login failed")
+                }
+                inProgress.value = false
+            }
+    }
+
+
+    fun handleException(exception: Exception? = null, customMessage: String = "") {
+        exception?.printStackTrace()
+        val errorMsg = exception?.localizedMessage ?: ""
+        val message = if (customMessage.isEmpty()) errorMsg else "$customMessage: $errorMsg"
+        popupNotification.value = Event(message)
+    }
+}
