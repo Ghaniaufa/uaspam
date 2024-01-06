@@ -114,7 +114,7 @@ fun LoginScreen(navController: NavController, vm: IgViewModel){
                     Icon(
                         painter = painterResource(id = R.drawable.baseline_close_24),
                         contentDescription = null,
-                        Modifier.clickable { email = emty }
+                        Modifier.clickable {email = emty}
                     )
                 }
             },
@@ -170,7 +170,8 @@ fun LoginScreen(navController: NavController, vm: IgViewModel){
                 if (password.isNotEmpty()) {
                     val visibilityIcon = if (passwordVisibility) {
                         painterResource(id = R.drawable.baseline_visibility_24)
-                    } else {
+                    }
+                    else{
                         painterResource(id = R.drawable.baseline_visibility_off_24)
                     }
                     Icon(
@@ -184,7 +185,8 @@ fun LoginScreen(navController: NavController, vm: IgViewModel){
             },
             visualTransformation = if (passwordVisibility) {
                 VisualTransformation.None
-            } else {
+            }
+            else {
                 PasswordVisualTransformation()
             },
             keyboardOptions = KeyboardOptions(
@@ -222,7 +224,40 @@ fun LoginScreen(navController: NavController, vm: IgViewModel){
                     color = Color.White
                 )
         ) {
-
+            Button(onClick = {
+                if (email.isNotEmpty()) {
+                    errorE = false
+                    if (password.isNotEmpty()) {
+                        errorP = false
+                        vm.login(
+                            email,
+                            password
+                        )
+                    }
+                    else {
+                        errorP = true
+                    }
+                }
+                else {
+                    errorE = true
+                }
+            },
+                colors = ButtonDefaults.buttonColors(
+                    Color.Transparent
+                ),
+                modifier = Modifier.width(200.dp)
+            ) {
+                Text(
+                    text = "Login",
+                    color = Color.Black,
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            if (vm.signedIn.value){
+                navController.navigate(DestinationScreen.Sucess.route)
+            }
+            vm.signedIn.value = false
         }
     }
 }
