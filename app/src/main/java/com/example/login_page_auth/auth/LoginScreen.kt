@@ -63,5 +63,70 @@ fun LoginScreen(navController: NavController, vm: IgViewModel){
         contentScale = ContentScale.FillBounds,
         modifier = Modifier.fillMaxSize()
     )
-
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        if (vm.inProgress.value){
+            CircularProgressIndicator()
+        }
+    }
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 150.dp)
+            .verticalScroll(
+                rememberScrollState()
+            )
+    ) {
+        Text(
+            text = "User Login",
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
+            fontSize = 40.sp
+        )
+        Spacer(modifier = Modifier.height(50.dp))
+        if (errorE) {
+            Text(
+                text = "Enter email",
+                color = Color.Red,
+                modifier = Modifier.padding(end = 100.dp)
+            )
+        }
+        TextField(
+            value = email,
+            onValueChange = {
+                email = it
+            },
+            label = {
+                Text(text = "Email")
+            },
+            leadingIcon = {
+                Icon(
+                    painter = painterResource(id = R.drawable.baseline_person_24),
+                    contentDescription = null
+                )
+            },
+            trailingIcon = {
+                if (email.isNotEmpty()) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.baseline_close_24),
+                        contentDescription = null,
+                        Modifier.clickable {email = emty}
+                    )
+                }
+            },
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next
+            ),
+            singleLine = true,
+            textStyle = TextStyle(
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp,
+            )
+        )
+    }
 }
