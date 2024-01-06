@@ -44,14 +44,18 @@ class PetRepositoriImpl(private val firestore: FirebaseFirestore): PetRepositori
     }
 
     override suspend fun update(pet: Pet) {
-        TODO("Not yet implemented")
+        firestore.collection("Pet").document(pet.id).set(pet).await()
     }
 
     override suspend fun delete(petId: String) {
-        TODO("Not yet implemented")
+        firestore.collection("Pet").document(petId).delete().await()
     }
 
     override fun getPetById(petId: String): Flow<Pet> {
-        TODO("Not yet implemented")
+        return flow {
+            val snapshot = firestore.collection("Pet").document(petId).get().await()
+            val pet = snapshot.toObject(Pet::class.java)
+            emit(pet!!)
+        }.flowOn(Dispatchers.IO)
     }
 }
