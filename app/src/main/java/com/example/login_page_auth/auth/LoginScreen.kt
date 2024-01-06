@@ -114,7 +114,7 @@ fun LoginScreen(navController: NavController, vm: IgViewModel){
                     Icon(
                         painter = painterResource(id = R.drawable.baseline_close_24),
                         contentDescription = null,
-                        Modifier.clickable {email = emty}
+                        Modifier.clickable { email = emty }
                     )
                 }
             },
@@ -126,7 +126,31 @@ fun LoginScreen(navController: NavController, vm: IgViewModel){
                 color = Color.White,
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
+            ),
+            shape = RoundedCornerShape(50.dp),
+            modifier = Modifier
+                .width(300.dp)
+                .height(60.dp),
+            colors = TextFieldDefaults.textFieldColors(
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
+                containerColor = Color(0x30FFFFFF),
+                focusedLeadingIconColor = Color.White,
+                unfocusedLeadingIconColor = Color.White,
+                focusedLabelColor = Color.White,
+                unfocusedLabelColor = Color.White,
+                cursorColor = Color.Green,
+                focusedTrailingIconColor = Color.White,
+                unfocusedTrailingIconColor = Color.White
             )
         )
+        Spacer(modifier = Modifier.height(30.dp))
+        if (errorP) {
+            Text(
+                text = "Enter Password",
+                color = Color.Red,
+                modifier = Modifier.padding(end = 100.dp)
+            )
+        }
     }
 }
