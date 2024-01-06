@@ -42,4 +42,16 @@ class PetRepositoriImpl(private val firestore: FirebaseFirestore): PetRepositori
             "Failed $e"
         }
     }
+
+    override suspend fun update(pet: Pet) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun delete(petId: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getPetById(petId: String): Flow<Pet> {
+        TODO("Not yet implemented")
+    }
 }
