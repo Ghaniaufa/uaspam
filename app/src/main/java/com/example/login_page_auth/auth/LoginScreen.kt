@@ -152,5 +152,77 @@ fun LoginScreen(navController: NavController, vm: IgViewModel){
                 modifier = Modifier.padding(end = 100.dp)
             )
         }
+        TextField(
+            value = password,
+            onValueChange = {
+                password = it
+            },
+            label = {
+                Text(text = "Password")
+            },
+            leadingIcon = {
+                Icon(
+                    painter = painterResource(id = R.drawable.baseline_lock_24),
+                    contentDescription = null
+                )
+            },
+            trailingIcon = {
+                if (password.isNotEmpty()) {
+                    val visibilityIcon = if (passwordVisibility) {
+                        painterResource(id = R.drawable.baseline_visibility_24)
+                    } else {
+                        painterResource(id = R.drawable.baseline_visibility_off_24)
+                    }
+                    Icon(
+                        painter = visibilityIcon,
+                        contentDescription = if (passwordVisibility) "Hide Password" else "Show Password",
+                        Modifier.clickable {
+                            passwordVisibility = !passwordVisibility
+                        }
+                    )
+                }
+            },
+            visualTransformation = if (passwordVisibility) {
+                VisualTransformation.None
+            } else {
+                PasswordVisualTransformation()
+            },
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Done,
+                keyboardType = KeyboardType.Password
+            ),
+            singleLine = true,
+            textStyle = TextStyle(
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp
+            ),
+            shape = RoundedCornerShape(50.dp),
+            modifier = Modifier
+                .width(300.dp)
+                .height(60.dp),
+            colors = TextFieldDefaults.textFieldColors(
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
+                containerColor = Color(0x30FFFFFF),
+                focusedLeadingIconColor = Color.White,
+                unfocusedLeadingIconColor = Color.White,
+                focusedLabelColor = Color.White,
+                unfocusedLabelColor = Color.White,
+                cursorColor = Color.Green,
+                focusedTrailingIconColor = Color.White,
+                unfocusedTrailingIconColor = Color.White
+            )
+        )
+        Spacer(modifier = Modifier.height(50.dp))
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(50.dp))
+                .background(
+                    color = Color.White
+                )
+        ) {
+
+        }
     }
 }
