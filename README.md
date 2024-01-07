@@ -9,3 +9,7 @@ peliharaan customer yang sudah di kembalikan ke pemiliknya atau belum. Aplikasi 
 
 # Use Case Diagram
 <img width="568" alt="image" src="https://github.com/Ghaniaufa/uaspam/assets/106093781/6b897d3e-09c5-49b0-8090-c237c28ae2ce">
+
+# Detail Pembagian Kelompok
+Maula Ghani Al-Aufa : Membuat fitur login serta view dan edit
+Adinda Nurhayati: Membuat Crate dan update
