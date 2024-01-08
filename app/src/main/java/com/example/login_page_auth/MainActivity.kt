@@ -13,9 +13,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.login_page_auth.auth.HomeScreen
 import com.example.login_page_auth.auth.LoginScreen
 import com.example.login_page_auth.auth.MainScreen
-import com.example.login_page_auth.auth.SuccessScreen
+import com.example.login_page_auth.navigation.AuthenticationApp
 import com.example.login_page_auth.ui.theme.Login_page_authTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,28 +38,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-sealed class DestinationScreen(val route: String) {
-    object Main: DestinationScreen("main")
-    object Login: DestinationScreen("login")
-    object Sucess: DestinationScreen("sucess")
-
-}
-
-@Composable
-fun AuthenticationApp(){
-    val vm = hiltViewModel<IgViewModel>()
-    val navController = rememberNavController()
-
-    NavHost(navController = navController,
-        startDestination = DestinationScreen.Main.route) {
-        composable(DestinationScreen.Main.route){
-            MainScreen(navController, vm )
-        }
-        composable(DestinationScreen.Login.route) {
-            LoginScreen(navController, vm)
-        }
-        composable(DestinationScreen.Sucess.route) {
-            SuccessScreen(navController, vm)
-        }
-    }
-}
