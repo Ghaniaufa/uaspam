@@ -5,4 +5,6 @@ data class Pet(
     val namapet: String,
     val jenispet: String,
     val telpon: String,
-)
+){
+    constructor(): this("","","","")
+}
