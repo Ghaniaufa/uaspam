@@ -1,4 +1,4 @@
-package com.example.login_page_auth.ui.theme
+package com.example.contactapp_with_firebase.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

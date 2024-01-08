@@ -27,9 +27,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.login_page_auth.DestinationScreen
-import com.example.login_page_auth.IgViewModel
+import com.example.login_page_auth.login.IgViewModel
 import com.example.login_page_auth.R
+import com.example.login_page_auth.navigation.DestinationScreen
 
 @Composable
 fun MainScreen(navController: NavController, vm: IgViewModel) {

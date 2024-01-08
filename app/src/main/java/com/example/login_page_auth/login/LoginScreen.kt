@@ -1,4 +1,4 @@
-package com.example.login_page_auth.auth
+package com.example.login_page_auth.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -43,9 +43,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.login_page_auth.DestinationScreen
-import com.example.login_page_auth.IgViewModel
 import com.example.login_page_auth.R
+import com.example.login_page_auth.navigation.DestinationScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
