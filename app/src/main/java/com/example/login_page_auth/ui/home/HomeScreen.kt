@@ -37,7 +37,7 @@ fun HomeScreen(
    viewModel: IgViewModel,
 
    ){
-   val image = painterResource(id = R.drawable.eslilin)
+   val image = painterResource(id = R.drawable.homecat)
    Column(modifier = Modifier, verticalArrangement = Arrangement.SpaceBetween) {
       OutlinedCard(
          colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -56,21 +56,6 @@ fun HomeScreen(
                contentDescription = null,
                contentScale = ContentScale.Crop
             )
-            Text(
-               text = "Es Lilin",
-               color = Color.DarkGray,
-               fontSize = 35.sp,
-               modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
-            Text(
-               text = "Ceu Imas",
-               color = Color.DarkGray,
-               fontFamily = FontFamily.Cursive,
-               fontStyle = FontStyle.Italic,
-               fontSize = 60.sp,
-               fontWeight = FontWeight.Bold
-            )
-
          }
       }
    }
