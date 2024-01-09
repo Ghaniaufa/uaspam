@@ -1,15 +1,30 @@
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.login_page_auth.AddEvent
+import com.example.login_page_auth.AddUIState
 import com.example.login_page_auth.PenyediaViewModel
+import com.example.login_page_auth.PetTopAppBar
 import com.example.login_page_auth.navigation.DestinasiNavigasi
-import java.lang.reflect.Modifier
-
+import kotlinx.coroutines.launch
 object DestinasiAdd : DestinasiNavigasi {
     override val route = "item_entry"
     override val titleRes = "Entry Pet"
@@ -43,7 +58,7 @@ fun AddScreen(
             onPetValueChange = addViewModel::updateAddUIState,
             onSaveClick = {
                 coroutineScope.launch {
-                    addViewModel.addKontak()
+                    addViewModel.addPet()
                     navigateBack()
                 }
             },
@@ -81,6 +96,7 @@ fun EntryBody(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormInput(
     addEvent: AddEvent,
