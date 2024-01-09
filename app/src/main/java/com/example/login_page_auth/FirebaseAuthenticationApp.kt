@@ -15,3 +15,4 @@ class FirebaseAuthenticationApp: Application() {
         container = PetContainer()
     }
 }
+
