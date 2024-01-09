@@ -27,7 +27,7 @@ class DetailViewModel (
         repository.getPetById(petId)
             .filterNotNull()
             .map{
-                DetailUIState(addEvent = it.toDetailPet())
+                DetailUIState(addPet = it.toDetailPet())
             }.stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),

@@ -3,17 +3,17 @@ package com.example.login_page_auth
 import com.example.login_page_auth.model.Pet
 
 data class AddUIState(
-    val addEvent: AddEvent = AddEvent(),
+    val addPet: AddPet = AddPet(),
 )
 
-data class AddEvent(
+data class AddPet(
     val id: String ="",
     val namapet: String = "",
     val jenispet: String = "",
     val telpon: String = "",
 )
 
-fun AddEvent.toPet() = Pet(
+fun AddPet.toPet() = Pet(
     id = id,
     namapet = namapet,
     jenispet = jenispet,
@@ -21,18 +21,18 @@ fun AddEvent.toPet() = Pet(
 )
 
 data class DetailUIState(
-    val addEvent: AddEvent = AddEvent(),
+    val addPet: AddPet = AddPet(),
 )
 
-fun Pet.toDetailPet(): AddEvent =
-    AddEvent(
+fun Pet.toDetailPet(): AddPet =
+    AddPet(
         id = id,
         namapet = namapet,
         jenispet = jenispet,
         telpon = telpon
     )
 fun  Pet.toUIStatePet(): AddUIState = AddUIState(
-    addEvent = this.toDetailPet()
+    addPet = this.toDetailPet()
 )
 data class HomeUIState(
     val listPet: List<Pet> = listOf(),

@@ -2,10 +2,21 @@ package com.example.login_page_auth.ui.home
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
@@ -13,8 +24,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -25,6 +38,7 @@ import androidx.navigation.NavController
 import com.example.login_page_auth.R
 import com.example.login_page_auth.ui.login.IgViewModel
 import com.example.login_page_auth.navigation.DestinasiNavigasi
+import com.example.login_page_auth.navigation.DestinationScreen
 
 
 object DestinasiHome : DestinasiNavigasi {
@@ -33,29 +47,81 @@ object DestinasiHome : DestinasiNavigasi {
 }
 @Composable
 fun HomeScreen(
-   navController: NavController,
-   viewModel: IgViewModel,
+   navController: NavController, viewmodel: IgViewModel
+) {
+   // Set background color for the entire screen
+   Box(
+      modifier = Modifier
+         .clip(RoundedCornerShape(50.dp))
+         .background(Color(255, 122, 122, 255))
 
-   ){
-   val image = painterResource(id = R.drawable.homecat)
-   Column(modifier = Modifier, verticalArrangement = Arrangement.SpaceBetween) {
-      OutlinedCard(
-         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-         border = BorderStroke(1.dp, Color.Black),
-         modifier = Modifier
-            .fillMaxWidth(0.95f)
-            .padding(vertical = 50.dp)
-            .align(Alignment.CenterHorizontally)
+   ) {
+      Button(
+         onClick = {
+            navController.navigate(DestinationScreen.AddData.route)
+         },
+         colors = ButtonDefaults.buttonColors(
+            Color.Transparent
+         ),
+         modifier = Modifier.width(200.dp)
       ) {
-         Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-         ) {
-            Image(
-               painter = image,
-               contentDescription = null,
-               contentScale = ContentScale.Crop
-            )
+         Text(
+            text = "Get Started",
+            color = Color.White,
+            fontSize = 15.sp,
+            fontWeight = FontWeight.Bold
+         )
+      }
+   }
+}
+
+@Composable
+fun LargeCard(
+   title: String,
+   onNextButtonClicked: () -> Unit
+) {
+   Card(
+      modifier = Modifier
+         .fillMaxWidth()
+         .padding(bottom = 16.dp),
+   ) {
+      Column(
+         modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+         horizontalAlignment = Alignment.CenterHorizontally,
+         verticalArrangement = Arrangement.Center
+      ) {
+         Text(text = title, fontWeight = FontWeight.Bold)
+         Spacer(modifier = Modifier.height(16.dp))
+         Button(onClick = onNextButtonClicked) {
+            Text(text = "Next")
+         }
+      }
+   }
+}
+
+@Composable
+fun SmallCard(
+   title: String,
+   onNextButtonClicked: () -> Unit
+) {
+   Card(
+      modifier = Modifier
+         .fillMaxWidth()
+         .padding(end = 8.dp),
+   ) {
+      Column(
+         modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+         horizontalAlignment = Alignment.CenterHorizontally,
+         verticalArrangement = Arrangement.Center
+      ) {
+         Text(text = title, fontWeight = FontWeight.Bold)
+         Spacer(modifier = Modifier.height(16.dp))
+         Button(onClick = onNextButtonClicked) {
+            Text(text = "Next")
          }
       }
    }

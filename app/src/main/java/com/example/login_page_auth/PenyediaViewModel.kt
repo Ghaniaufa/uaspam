@@ -1,5 +1,6 @@
 package com.example.login_page_auth
 
+import AddViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
@@ -15,6 +16,9 @@ object PenyediaViewModel {
 
         initializer {
             HomeViewModel(aplikasiPet().container.petRepositori)
+        }
+        initializer {
+            AddViewModel(aplikasiPet().container.petRepositori)
         }
     }
 

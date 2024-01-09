@@ -1,5 +1,6 @@
 package com.example.login_page_auth.navigation
 
+import AddScreen
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -15,6 +16,7 @@ sealed class DestinationScreen(val route: String) {
     object Main: DestinationScreen("main")
     object Login: DestinationScreen("login")
     object Home: DestinationScreen("home")
+    object AddData: DestinationScreen("add")
     
 
 }
@@ -33,6 +35,9 @@ fun PengelolaHalaman (navController: NavHostController = rememberNavController()
         }
         composable(DestinationScreen.Home.route){
             HomeScreen(navController, viewModel)
+        }
+        composable(DestinationScreen.AddData.route){
+            AddScreen(navigateBack = {navController.popBackStack()})
         }
     }
 }
