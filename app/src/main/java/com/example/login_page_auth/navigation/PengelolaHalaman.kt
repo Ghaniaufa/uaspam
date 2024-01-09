@@ -6,10 +6,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.login_page_auth.auth.MainScreen
-import com.example.login_page_auth.home.HomeScreen
-import com.example.login_page_auth.login.IgViewModel
-import com.example.login_page_auth.login.LoginScreen
+import com.example.login_page_auth.ui.auth.MainScreen
+import com.example.login_page_auth.ui.home.HomeScreen
+import com.example.login_page_auth.ui.login.IgViewModel
+import com.example.login_page_auth.ui.login.LoginScreen
 
 sealed class DestinationScreen(val route: String) {
     object Main: DestinationScreen("main")

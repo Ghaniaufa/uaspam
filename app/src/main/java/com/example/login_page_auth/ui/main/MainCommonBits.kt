@@ -1,9 +1,9 @@
-package com.example.login_page_auth.main
+package com.example.login_page_auth.ui.main
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-import com.example.login_page_auth.login.IgViewModel
+import com.example.login_page_auth.ui.login.IgViewModel
 
 @Composable
 fun NotificationMessage(vm: IgViewModel) {

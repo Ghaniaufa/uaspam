@@ -1,4 +1,4 @@
-package com.example.login_page_auth.login
+package com.example.login_page_auth.ui.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

@@ -1,4 +1,4 @@
-package com.example.login_page_auth.home
+package com.example.login_page_auth.ui.home
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.login_page_auth.R
-import com.example.login_page_auth.login.IgViewModel
+import com.example.login_page_auth.ui.login.IgViewModel
 import com.example.login_page_auth.navigation.DestinasiNavigasi
 
 
@@ -36,7 +36,7 @@ fun HomeScreen(
    navController: NavController,
    viewModel: IgViewModel,
 
-){
+   ){
    val image = painterResource(id = R.drawable.eslilin)
    Column(modifier = Modifier, verticalArrangement = Arrangement.SpaceBetween) {
       OutlinedCard(

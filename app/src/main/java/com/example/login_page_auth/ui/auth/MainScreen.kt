@@ -1,4 +1,4 @@
-package com.example.login_page_auth.auth
+package com.example.login_page_auth.ui.auth
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,7 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.login_page_auth.login.IgViewModel
+import com.example.login_page_auth.ui.login.IgViewModel
 import com.example.login_page_auth.R
 import com.example.login_page_auth.navigation.DestinasiNavigasi
 import com.example.login_page_auth.navigation.DestinationScreen

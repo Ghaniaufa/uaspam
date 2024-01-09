@@ -1,4 +1,4 @@
-package com.example.login_page_auth.home
+package com.example.login_page_auth.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
