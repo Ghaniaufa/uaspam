@@ -11,9 +11,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,6 +28,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import com.example.login_page_auth.ui.login.IgViewModel
 import com.example.login_page_auth.R
@@ -39,53 +42,62 @@ object DestinasiLoginMainScreen : DestinasiNavigasi {
 }
 @Composable
 fun MainScreen(navController: NavController, viewmodel: IgViewModel) {
-    Image(
-        painter = painterResource(id = R.drawable.bl),
-        contentDescription = null,
-        contentScale = ContentScale.FillBounds,
-        modifier = Modifier.fillMaxSize()
-    )
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
+    Box(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 100.dp)
+            .fillMaxSize()
     ) {
+        // Content lain di sini
+
+        // Gambar dengan zIndex tinggi agar muncul di atas elemen lain
         Image(
-            painter = painterResource(id = R.drawable.em),
+            painter = painterResource(id = R.drawable.bgpink),
             contentDescription = null,
-            Modifier.size(200.dp)
-        )
-        Text(
-            text = "Welcome",
-            color = Color.White,
-            fontWeight = FontWeight.Bold,
-            fontSize = 40.sp
-        )
-        Spacer(modifier = Modifier.height(80.dp))
-        Box(
+            contentScale = ContentScale.FillBounds,
             modifier = Modifier
-                .clip(RoundedCornerShape(50.dp))
-                .background(
-                    brush = Brush.horizontalGradient(
-                        colors = listOf(Color(0xFFFFD700), Color.White, Color(0xFFFFD700))
-                    )
-                )
+                .fillMaxWidth()
+                .wrapContentSize(Alignment.TopCenter)
+                .size(450.dp) // Atur zIndex sesuai kebutuhan
+        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 100.dp)
         ) {
-            Button(onClick = {
-                navController.navigate(DestinationScreen.Login.route)
-            },
-                colors = ButtonDefaults.buttonColors(
-                    Color.Transparent
-                ),
-                modifier = Modifier.width(300.dp)
+            Image(
+                painter = painterResource(id = R.drawable.homecat),
+                contentDescription = null,
+                Modifier.size(200.dp)
+            )
+            Text(
+                text = "Welcome",
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = 40.sp
+            )
+            Spacer(modifier = Modifier.height(370.dp))
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(50.dp))
+                    .background(Color(255, 122, 122, 255))
+
             ) {
-                Text(
-                    text = "Log In",
-                    color = Color.Black,
-                    fontSize = 30.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                Button(
+                    onClick = {
+                        navController.navigate(DestinationScreen.Login.route)
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        Color.Transparent
+                    ),
+                    modifier = Modifier.width(300.dp)
+                ) {
+                    Text(
+                        text = "Log In",
+                        color = Color.White,
+                        fontSize = 30.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
             }
         }
     }
