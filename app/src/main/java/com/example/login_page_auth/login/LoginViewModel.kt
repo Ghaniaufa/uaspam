@@ -3,6 +3,7 @@ package com.example.login_page_auth.login
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.login_page_auth.Event
+import com.example.login_page_auth.repositori.PetRepositori
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.lang.Exception
@@ -15,7 +16,7 @@ class IgViewModel @Inject constructor(
 
     val signedIn = mutableStateOf(false)
     val inProgress = mutableStateOf(false)
-    val popupNotification = mutableStateOf<Event<String>?>(null)
+    val popupNotification = mutableStateOf<com.example.login_page_auth.Event<String>?>(null)
 
     fun onSignup(email: String, pass: String) {
         inProgress.value = true

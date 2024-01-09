@@ -44,11 +44,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.login_page_auth.R
+import com.example.login_page_auth.navigation.DestinasiNavigasi
 import com.example.login_page_auth.navigation.DestinationScreen
+
+object DestinasiLoginPage : DestinasiNavigasi {
+    override val route = "LoginPage"
+    override val titleRes = "LoginPage"
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(navController: NavController, vm: IgViewModel){
+fun LoginScreen(navController: NavController, viewModel: IgViewModel){
     val emty by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -67,7 +73,7 @@ fun LoginScreen(navController: NavController, vm: IgViewModel){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        if (vm.inProgress.value){
+        if (viewModel.inProgress.value){
             CircularProgressIndicator()
         }
     }
@@ -228,7 +234,7 @@ fun LoginScreen(navController: NavController, vm: IgViewModel){
                     errorE = false
                     if (password.isNotEmpty()) {
                         errorP = false
-                        vm.login(
+                        viewModel.login(
                             email,
                             password
                         )
@@ -253,10 +259,10 @@ fun LoginScreen(navController: NavController, vm: IgViewModel){
                     fontWeight = FontWeight.Bold
                 )
             }
-            if (vm.signedIn.value){
-                navController.navigate(DestinationScreen.Sucess.route)
+            if (viewModel.signedIn.value){
+                navController.navigate(DestinationScreen.Home.route)
             }
-            vm.signedIn.value = false
+            viewModel.signedIn.value = false
         }
     }
 }
