@@ -19,7 +19,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.login_page_auth.AddEvent
+import com.example.login_page_auth.AddPet
 import com.example.login_page_auth.AddUIState
 import com.example.login_page_auth.PenyediaViewModel
 import com.example.login_page_auth.PetTopAppBar
@@ -73,7 +73,7 @@ fun AddScreen(
 @Composable
 fun EntryBody(
     addUIState: AddUIState,
-    onPetValueChange: (AddEvent) -> Unit,
+    onPetValueChange: (AddPet) -> Unit,
     onSaveClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
@@ -82,7 +82,7 @@ fun EntryBody(
         modifier = modifier.padding(12.dp)
     ) {
         FormInput(
-            addEvent = addUIState.addEvent,
+            addPet = addUIState.addPet,
             onValueChange = onPetValueChange,
             modifier = Modifier.fillMaxWidth()
         )
@@ -99,9 +99,9 @@ fun EntryBody(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormInput(
-    addEvent: AddEvent,
+    addPet: AddPet,
     modifier: Modifier = Modifier,
-    onValueChange: (AddEvent) -> Unit = {},
+    onValueChange: (AddPet) -> Unit = {},
     enabled: Boolean = true
 ) {
     Column(
@@ -109,24 +109,24 @@ fun FormInput(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         OutlinedTextField(
-            value = addEvent.namapet,
-            onValueChange = { onValueChange(addEvent.copy(namapet = it)) },
+            value = addPet.namapet,
+            onValueChange = { onValueChange(addPet.copy(namapet = it)) },
             label = { Text("Nama Hewan") },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
         OutlinedTextField(
-            value = addEvent.jenispet,
-            onValueChange = { onValueChange(addEvent.copy(jenispet = it)) },
+            value = addPet.jenispet,
+            onValueChange = { onValueChange(addPet.copy(jenispet = it)) },
             label = { Text("Jenis Hewan") },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
         OutlinedTextField(
-            value = addEvent.telpon,
-            onValueChange = { onValueChange(addEvent.copy(telpon = it)) },
+            value = addPet.telpon,
+            onValueChange = { onValueChange(addPet.copy(telpon = it)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             label = { Text(text = "Telpon") },
             modifier = Modifier.fillMaxWidth(),
