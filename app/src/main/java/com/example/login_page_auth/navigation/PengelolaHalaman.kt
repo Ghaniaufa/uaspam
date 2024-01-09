@@ -15,6 +15,7 @@ sealed class DestinationScreen(val route: String) {
     object Main: DestinationScreen("main")
     object Login: DestinationScreen("login")
     object Home: DestinationScreen("home")
+    
 
 }
 @Composable
