@@ -29,10 +29,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.login_page_auth.login.IgViewModel
 import com.example.login_page_auth.R
+import com.example.login_page_auth.navigation.DestinasiNavigasi
 import com.example.login_page_auth.navigation.DestinationScreen
 
+
+object DestinasiLoginMainScreen : DestinasiNavigasi {
+    override val route = "loginscreen"
+    override val titleRes = "MainLogin"
+}
 @Composable
-fun MainScreen(navController: NavController, vm: IgViewModel) {
+fun MainScreen(navController: NavController, viewmodel: IgViewModel) {
     Image(
         painter = painterResource(id = R.drawable.bl),
         contentDescription = null,
