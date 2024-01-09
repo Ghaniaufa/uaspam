@@ -89,12 +89,12 @@ fun MainScreen(navController: NavController, viewmodel: IgViewModel) {
                     colors = ButtonDefaults.buttonColors(
                         Color.Transparent
                     ),
-                    modifier = Modifier.width(300.dp)
+                    modifier = Modifier.width(200.dp)
                 ) {
                     Text(
-                        text = "Log In",
+                        text = "Get Started",
                         color = Color.White,
-                        fontSize = 30.sp,
+                        fontSize = 15.sp,
                         fontWeight = FontWeight.Bold
                     )
                 }

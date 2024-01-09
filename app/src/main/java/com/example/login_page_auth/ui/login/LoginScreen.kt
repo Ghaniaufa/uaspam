@@ -63,7 +63,7 @@ fun LoginScreen(navController: NavController, viewModel: IgViewModel){
     var errorP by remember { mutableStateOf(false) }
 
     Image(
-        painter = painterResource(id = R.drawable.gr),
+        painter = painterResource(id = R.drawable.bgpink),
         contentDescription = null,
         contentScale = ContentScale.FillBounds,
         modifier = Modifier.fillMaxSize()
@@ -87,7 +87,7 @@ fun LoginScreen(navController: NavController, viewModel: IgViewModel){
             )
     ) {
         Text(
-            text = "User Login",
+            text = "Admin Login",
             color = Color.White,
             fontWeight = FontWeight.Bold,
             fontSize = 40.sp
@@ -96,7 +96,7 @@ fun LoginScreen(navController: NavController, viewModel: IgViewModel){
         if (errorE) {
             Text(
                 text = "Enter email",
-                color = Color.Red,
+                color = Color.White,
                 modifier = Modifier.padding(end = 100.dp)
             )
         }
@@ -153,7 +153,7 @@ fun LoginScreen(navController: NavController, viewModel: IgViewModel){
         if (errorP) {
             Text(
                 text = "Enter Password",
-                color = Color.Red,
+                color = Color.White,
                 modifier = Modifier.padding(end = 100.dp)
             )
         }
@@ -248,13 +248,13 @@ fun LoginScreen(navController: NavController, viewModel: IgViewModel){
                 }
             },
                 colors = ButtonDefaults.buttonColors(
-                    Color.Transparent
+                    Color.White
                 ),
                 modifier = Modifier.width(200.dp)
             ) {
                 Text(
                     text = "Login",
-                    color = Color.Black,
+                    color = Color(255, 122, 122, 255),
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold
                 )
