@@ -27,34 +27,27 @@ sealed class DestinationScreen(val route: String) {
     object AllData: DestinationScreen("all")
     object Product: DestinationScreen("product")
 
-    
+
 
 }
 @Composable
-fun PengelolaHalaman() {
+fun PengelolaHalaman (navController: NavHostController = rememberNavController()){
     val viewModel = hiltViewModel<IgViewModel>()
     val navController = rememberNavController()
 
-    NavHost(
-        navController = navController,
-        startDestination = DestinationScreen.Main.route,
-        modifier = Modifier
-    ) {
-        composable(DestinationScreen.Main.route) {
-            MainScreen(navController, viewModel)
+    NavHost(navController = navController,
+        startDestination = DestinationScreen.Main.route){
+        composable(DestinationScreen.Main.route){
+            MainScreen(navController, viewModel )
         }
-        composable(DestinationScreen.Login.route) {
-            LoginScreen(navController, viewModel)
+        composable(DestinationScreen.Login.route){
+            LoginScreen(navController , viewModel )
         }
-        composable(DestinationScreen.AllData.route){
-            HomeScreen(
-                navigateToItemEntry = { /*TODO*/ },
-                viewmodel = viewModel, navController = navController) {
-
-            }
+        composable(DestinationScreen.Home.route){
+            HomeScreen(navController, viewModel)
         }
-        composable(DestinationScreen.AddData.route) {
-            AddScreen(navigateBack = { navController.popBackStack() })
+        composable(DestinationScreen.AddData.route){
+            AddScreen(navigateBack = {navController.popBackStack()})
         }
     }
 }
