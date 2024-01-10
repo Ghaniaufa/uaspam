@@ -1,7 +1,5 @@
 package com.example.login_page_auth.ui.home
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,48 +10,28 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import com.example.login_page_auth.R
 import com.example.login_page_auth.ui.login.IgViewModel
 import com.example.login_page_auth.navigation.DestinasiNavigasi
 import com.example.login_page_auth.navigation.DestinationScreen
 
 
-object DestinasiHome : DestinasiNavigasi {
-   override val route = "home"
-   override val titleRes = "PetHome"
-}
+
 
 @Composable
-fun HomeScreen(
-   navigateToItemEntry: () -> Unit,
-   viewmodel: IgViewModel,
-   navController: NavController,
-   onNextButtonClicked: () -> Unit
-) {
+fun HomeScreen(navController: NavController) {
    // Set background color for the entire screen
    Box(
       modifier = Modifier
@@ -76,6 +54,7 @@ fun HomeScreen(
             // Large card at the top
             LargeCard("Large Card", navController = navController)
 
+
             // Two small cards below, arranged horizontally
             Row(
                modifier = Modifier
@@ -83,12 +62,8 @@ fun HomeScreen(
                   .padding(top = 16.dp),
                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-               SmallCard1(navController = navController, title = "All Pet Data",
-                  onNextButtonClicked = onNextButtonClicked
-               )
-               SmallCard2(navController = navController, title ="All Product",
-                  onNextButtonClicked = onNextButtonClicked
-               )
+               SmallCard1(navController = navController, title = "All Pet Data")
+               SmallCard2(navController = navController, title = "All Product")
             }
          }
       }
@@ -104,8 +79,8 @@ fun LargeCard(
       modifier = Modifier
          .fillMaxWidth()
          .background(Color(255, 122, 122, 255))
-         .padding(end = 8.dp) // Adjusted padding here
-         .padding(bottom = 16.dp), // Added padding here
+         .padding(end = 10.dp) // Adjusted padding here
+         .padding(bottom = 10.dp), // Added padding here
    ) {
       Column(
          modifier = Modifier
@@ -121,7 +96,7 @@ fun LargeCard(
                Color.Transparent
             ),
             onClick = {
-               navController.navigate(DestinationScreen.AddData.route)
+               navController.navigate("PetHotelScreen")
             },
          )
          {
@@ -130,14 +105,8 @@ fun LargeCard(
       }
    }
 }
-
-
 @Composable
-fun SmallCard2(
-   navController: NavController,
-   title: String,
-   onNextButtonClicked: () -> Unit
-) {
+fun SmallCard1(navController: NavController, title: String) {
    Card(
       modifier = Modifier
          .fillMaxWidth()
@@ -156,19 +125,16 @@ fun SmallCard2(
             colors = ButtonDefaults.buttonColors(
                Color.Transparent
             ),
-            onClick = {navController.navigate(DestinationScreen.AllData.route) }
+            onClick = { navController.navigate("AllDataPet") }
          ) {
             Text(text = "All Pet Data")
          }
       }
    }
 }
+
 @Composable
-fun SmallCard1(
-   navController: NavController,
-   title: String,
-   onNextButtonClicked: () -> Unit
-) {
+fun SmallCard2(navController: NavController, title: String) {
    Card(
       modifier = Modifier
          .fillMaxWidth()
@@ -187,9 +153,9 @@ fun SmallCard1(
             colors = ButtonDefaults.buttonColors(
                Color.Transparent
             ),
-            onClick = {navController.navigate(DestinationScreen.Product.route) }
+            onClick = { navController.navigate("Product") }
          ) {
-            Text(text = "All Pet Data")
+            Text(text = "Product Pet Care")
          }
       }
    }

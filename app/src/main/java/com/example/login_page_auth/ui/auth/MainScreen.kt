@@ -36,10 +36,7 @@ import com.example.login_page_auth.navigation.DestinasiNavigasi
 import com.example.login_page_auth.navigation.DestinationScreen
 
 
-object DestinasiLoginMainScreen : DestinasiNavigasi {
-    override val route = "loginscreen"
-    override val titleRes = "MainLogin"
-}
+
 @Composable
 fun MainScreen(navController: NavController, viewmodel: IgViewModel) {
     Box(
@@ -84,7 +81,7 @@ fun MainScreen(navController: NavController, viewmodel: IgViewModel) {
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(DestinationScreen.Login.route)
+                        navController.navigate("LoginPage")
                     },
                     colors = ButtonDefaults.buttonColors(
                         Color.Transparent

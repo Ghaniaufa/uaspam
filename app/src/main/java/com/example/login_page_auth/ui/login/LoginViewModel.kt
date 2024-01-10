@@ -43,6 +43,7 @@ class IgViewModel @Inject constructor(
                 if (it.isSuccessful) {
                     signedIn.value = true
                     handleException(it.exception, "login successful")
+
                 } else {
                     handleException(it.exception, "login failed")
                 }

@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -17,6 +18,8 @@ import com.example.login_page_auth.ui.detail.DetailScreen
 import com.example.login_page_auth.ui.home.HomeScreen
 import com.example.login_page_auth.ui.login.IgViewModel
 import com.example.login_page_auth.ui.login.LoginScreen
+import com.example.login_page_auth.ui.product.ProductScreen
+import com.google.firebase.auth.FirebaseAuth
 
 sealed class DestinationScreen(val route: String) {
     object Main: DestinationScreen("main")
@@ -31,23 +34,31 @@ sealed class DestinationScreen(val route: String) {
 
 }
 @Composable
-fun PengelolaHalaman (navController: NavHostController = rememberNavController()){
+fun PengelolaHalaman (navController: NavController = rememberNavController()){
     val viewModel = hiltViewModel<IgViewModel>()
-    val navController = rememberNavController()
 
-    NavHost(navController = navController,
-        startDestination = DestinationScreen.Main.route){
-        composable(DestinationScreen.Main.route){
-            MainScreen(navController, viewModel )
+
+    NavHost(
+        navController = navController as NavHostController,
+        startDestination = "MainScreen"
+    ) {
+        composable("MainScreen") {
+            MainScreen(navController, viewModel)
         }
-        composable(DestinationScreen.Login.route){
-            LoginScreen(navController , viewModel )
+        composable("LoginPage") {
+           LoginScreen(navController , viewModel )
         }
-        composable(DestinationScreen.Home.route){
-            HomeScreen(navController, viewModel)
+        composable("HomeScreen") {
+            HomeScreen(navController)
         }
-        composable(DestinationScreen.AddData.route){
+        composable("PetHotelScreen"){
             AddScreen(navigateBack = {navController.popBackStack()})
+        }
+        composable("AllDataPet"){
+            DetailScreen(navigateToItemEntry = { /*TODO*/ }, navigateBack = {navController.popBackStack()})
+        }
+        composable("Product"){
+            ProductScreen(navigateToItemEntry = { /*TODO*/ }, navigateBack = {navController.popBackStack()})
         }
     }
 }

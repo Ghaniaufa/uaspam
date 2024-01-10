@@ -47,10 +47,7 @@ import com.example.login_page_auth.R
 import com.example.login_page_auth.navigation.DestinasiNavigasi
 import com.example.login_page_auth.navigation.DestinationScreen
 
-object DestinasiLoginPage : DestinasiNavigasi {
-    override val route = "LoginPage"
-    override val titleRes = "LoginPage"
-}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -229,24 +226,25 @@ fun LoginScreen(navController: NavController, viewModel: IgViewModel){
                     color = Color.White
                 )
         ) {
-            Button(onClick = {
-                if (email.isNotEmpty()) {
-                    errorE = false
-                    if (password.isNotEmpty()) {
-                        errorP = false
-                        viewModel.login(
-                            email,
-                            password
-                        )
+            Button(
+                onClick = {
+                    if (email.isNotEmpty()) {
+                        errorE = false
+                        if (password.isNotEmpty()) {
+                            errorP = false
+                            viewModel.login(
+                                email,
+                                password
+                            )
+                            navController.navigate("HomeScreen")
+
+                        } else {
+                            errorP = true
+                        }
+                    } else {
+                        errorE = true
                     }
-                    else {
-                        errorP = true
-                    }
-                }
-                else {
-                    errorE = true
-                }
-            },
+                },
                 colors = ButtonDefaults.buttonColors(
                     Color.White
                 ),
@@ -259,10 +257,6 @@ fun LoginScreen(navController: NavController, viewModel: IgViewModel){
                     fontWeight = FontWeight.Bold
                 )
             }
-            if (viewModel.signedIn.value){
-                navController.navigate(DestinationScreen.Home.route)
-            }
-            viewModel.signedIn.value = false
         }
     }
 }
