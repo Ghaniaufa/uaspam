@@ -46,18 +46,12 @@ fun PengelolaHalaman() {
         composable(DestinationScreen.Login.route) {
             LoginScreen(navController, viewModel)
         }
-        composable(route = DetailDestination.routeWithArgs,
-            arguments = listOf(navArgument(DetailDestination.petId){
-                type = NavType.StringType
-            })
-        ){ backStackEntry ->
-            val petId = backStackEntry.arguments?.getString(DetailDestination.petId)
-            petId?.let {
-                DetailScreen(
-                    navigateToItemEntry = { navController.navigate("${DetailDestination.route}/$petId")},
-                    navigateBack = { navController.popBackStack()})
-            }
+        composable(DestinationScreen.AllData.route){
+            HomeScreen(
+                navigateToItemEntry = { /*TODO*/ },
+                viewmodel = viewModel, navController = navController) {
 
+            }
         }
         composable(DestinationScreen.AddData.route) {
             AddScreen(navigateBack = { navController.popBackStack() })
