@@ -38,7 +38,7 @@ fun PengelolaHalaman (navController: NavHostController = rememberNavController()
             LoginScreen(navController , viewModel )
         }
         composable(DestinationScreen.Home.route){
-            HomeScreen(navController, viewModel)
+            HomeScreen(navController, )
         }
         composable(DestinationScreen.AddData.route){
             AddScreen(navigateBack = {navController.popBackStack()})
