@@ -62,7 +62,7 @@ fun HomeScreen(
             .padding(16.dp),
          horizontalArrangement = Arrangement.SpaceBetween
       ) {
-         LargeCard(title = "Large Card") {
+         LargeCard(title = "Large Card", navController = navController) {
          }
 
          SmallCard(title = "Small Card") {
@@ -74,11 +74,13 @@ fun HomeScreen(
 @Composable
 fun LargeCard(
    title: String,
+   navController: NavController,
    onNextButtonClicked: () -> Unit
 ) {
    Card(
       modifier = Modifier
          .fillMaxWidth()
+         .background(Color(255, 122, 122, 255))
          .padding(end = 8.dp) // Adjusted padding here
          .padding(bottom = 16.dp), // Added padding here
    ) {
@@ -91,7 +93,15 @@ fun LargeCard(
       ) {
          Text(text = title, fontWeight = FontWeight.Bold)
          Spacer(modifier = Modifier.height(16.dp))
-         Button(onClick = onNextButtonClicked) {
+         Button(
+            colors = ButtonDefaults.buttonColors(
+               Color.Transparent
+            ),
+            onClick = {
+               navController.navigate(DestinationScreen.AddData.route)
+            },
+            )
+         {
             Text(text = "Next")
          }
       }
