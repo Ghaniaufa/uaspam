@@ -54,23 +54,19 @@ fun HomeScreen(
       modifier = Modifier
          .clip(RoundedCornerShape(50.dp))
          .background(Color(255, 122, 122, 255))
-
+         .fillMaxSize()
    ) {
-      Button(
-         onClick = {
-            navController.navigate(DestinationScreen.AddData.route)
-         },
-         colors = ButtonDefaults.buttonColors(
-            Color.Transparent
-         ),
-         modifier = Modifier.width(200.dp)
+      Row(
+         modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+         horizontalArrangement = Arrangement.SpaceBetween
       ) {
-         Text(
-            text = "Get Started",
-            color = Color.White,
-            fontSize = 15.sp,
-            fontWeight = FontWeight.Bold
-         )
+         LargeCard(title = "Large Card") {
+         }
+
+         SmallCard(title = "Small Card") {
+         }
       }
    }
 }
@@ -83,7 +79,8 @@ fun LargeCard(
    Card(
       modifier = Modifier
          .fillMaxWidth()
-         .padding(bottom = 16.dp),
+         .padding(end = 8.dp) // Adjusted padding here
+         .padding(bottom = 16.dp), // Added padding here
    ) {
       Column(
          modifier = Modifier
@@ -109,7 +106,7 @@ fun SmallCard(
    Card(
       modifier = Modifier
          .fillMaxWidth()
-         .padding(end = 8.dp),
+         .padding(end = 8.dp), // Adjusted padding here
    ) {
       Column(
          modifier = Modifier
