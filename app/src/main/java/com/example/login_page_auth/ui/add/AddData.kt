@@ -27,7 +27,7 @@ import com.example.login_page_auth.navigation.DestinasiNavigasi
 import kotlinx.coroutines.launch
 object DestinasiAdd : DestinasiNavigasi {
     override val route = "item_entry"
-    override val titleRes = "Entry Pet"
+    override val titleRes = "Pet Hotel"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
