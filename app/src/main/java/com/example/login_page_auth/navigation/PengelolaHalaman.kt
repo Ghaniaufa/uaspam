@@ -52,10 +52,15 @@ fun PengelolaHalaman (navController: NavController = rememberNavController()){
             HomeScreen(navController)
         }
         composable("PetHotelScreen"){
-            AddScreen(navigateBack = {navController.popBackStack()})
+            AddScreen(
+                navigateBack = {navController.popBackStack()})
         }
         composable("AllDataPet"){
-            DetailScreen(navigateToItemEntry = { /*TODO*/ }, navigateBack = {navController.popBackStack()})
+            DetailScreen(
+                navigateBack = {navController.popBackStack()},
+                navigateToItemEntry = { /*TODO*/ },
+                navController = navController
+            )
         }
         composable("Product"){
             ProductScreen(navigateToItemEntry = { /*TODO*/ }, navigateBack = {navController.popBackStack()})
