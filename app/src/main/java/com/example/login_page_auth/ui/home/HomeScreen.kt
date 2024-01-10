@@ -46,56 +46,55 @@ object DestinasiHome : DestinasiNavigasi {
    override val route = "home"
    override val titleRes = "PetHome"
 }
+
 @Composable
-fun SmallCard2(
-   title: String,
+fun HomeScreen(
+   navigateToItemEntry: () -> Unit,
+   viewmodel: IgViewModel,
+   navController: NavController,
    onNextButtonClicked: () -> Unit
 ) {
-   Card(
+   // Set background color for the entire screen
+   Box(
       modifier = Modifier
-         .fillMaxWidth()
-         .padding(end = 8.dp), // Adjusted padding here
+         .clip(RoundedCornerShape(50.dp))
+         .background(Color(255, 122, 122, 255))
+         .fillMaxSize()
    ) {
       Column(
+         verticalArrangement = Arrangement.Center,
          modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-         horizontalAlignment = Alignment.CenterHorizontally,
-         verticalArrangement = Arrangement.Center
+            .fillMaxSize()
+            .padding(16.dp)
       ) {
-         Text(text = title, fontWeight = FontWeight.Bold)
-         Spacer(modifier = Modifier.height(16.dp))
-         Button(onClick = onNextButtonClicked) {
-            Text(text = "All Pet Data")
+         Column(
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+               .fillMaxSize()
+               .padding(16.dp)
+         ) {
+            // Large card at the top
+            LargeCard("Large Card", navController = navController)
+
+            // Two small cards below, arranged horizontally
+            Row(
+               modifier = Modifier
+                  .fillMaxWidth()
+                  .padding(top = 16.dp),
+               horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+               SmallCard1(navController = navController, title = "All Pet Data",
+                  onNextButtonClicked = onNextButtonClicked
+               )
+               SmallCard2(navController = navController, title ="All Product",
+                  onNextButtonClicked = onNextButtonClicked
+               )
+            }
          }
       }
    }
 }
-@Composable
-fun SmallCard1(
-   title: String,
-   onNextButtonClicked: () -> Unit
-) {
-   Card(
-      modifier = Modifier
-         .fillMaxWidth()
-         .padding(end = 8.dp), // Adjusted padding here
-   ) {
-      Column(
-         modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-         horizontalAlignment = Alignment.CenterHorizontally,
-         verticalArrangement = Arrangement.Center
-      ) {
-         Text(text = title, fontWeight = FontWeight.Bold)
-         Spacer(modifier = Modifier.height(16.dp))
-         Button(onClick = onNextButtonClicked) {
-            Text(text = "All Pet Data")
-         }
-      }
-   }
-}
+
 @Composable
 fun LargeCard(
    title: String,
@@ -133,46 +132,64 @@ fun LargeCard(
 }
 
 
-
-
 @Composable
-fun HomeScreen(
-   viewmodel: IgViewModel,
+fun SmallCard2(
    navController: NavController,
+   title: String,
    onNextButtonClicked: () -> Unit
 ) {
-   // Set background color for the entire screen
-   Box(
+   Card(
       modifier = Modifier
-         .clip(RoundedCornerShape(50.dp))
-         .background(Color(255, 122, 122, 255))
-         .fillMaxSize()
+         .fillMaxWidth()
+         .padding(end = 8.dp), // Adjusted padding here
    ) {
       Column(
-         verticalArrangement = Arrangement.Center,
          modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
+            .fillMaxWidth()
+            .padding(16.dp),
+         horizontalAlignment = Alignment.CenterHorizontally,
+         verticalArrangement = Arrangement.Center
       ) {
-         Column(
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier
-               .fillMaxSize()
-               .padding(16.dp)
+         Text(text = title, fontWeight = FontWeight.Bold)
+         Spacer(modifier = Modifier.height(16.dp))
+         Button(
+            colors = ButtonDefaults.buttonColors(
+               Color.Transparent
+            ),
+            onClick = {navController.navigate(DestinationScreen.AllData.route) }
          ) {
-            // Large card at the top
-            LargeCard("Large Card", navController = navController)
-
-            // Two small cards below, arranged horizontally
-            Row(
-               modifier = Modifier
-                  .fillMaxWidth()
-                  .padding(top = 16.dp),
-               horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-               SmallCard1("Small Card 1", onNextButtonClicked)
-               SmallCard2("Small Card 2", onNextButtonClicked)
-            }
+            Text(text = "All Pet Data")
+         }
+      }
+   }
+}
+@Composable
+fun SmallCard1(
+   navController: NavController,
+   title: String,
+   onNextButtonClicked: () -> Unit
+) {
+   Card(
+      modifier = Modifier
+         .fillMaxWidth()
+         .padding(end = 8.dp), // Adjusted padding here
+   ) {
+      Column(
+         modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+         horizontalAlignment = Alignment.CenterHorizontally,
+         verticalArrangement = Arrangement.Center
+      ) {
+         Text(text = title, fontWeight = FontWeight.Bold)
+         Spacer(modifier = Modifier.height(16.dp))
+         Button(
+            colors = ButtonDefaults.buttonColors(
+               Color.Transparent
+            ),
+            onClick = {navController.navigate(DestinationScreen.Product.route) }
+         ) {
+            Text(text = "All Pet Data")
          }
       }
    }

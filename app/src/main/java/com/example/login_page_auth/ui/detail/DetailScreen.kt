@@ -16,6 +16,7 @@ object DetailDestination : DestinasiNavigasi {
 
 @Composable
 fun DetailScreen(
+    navigateToItemEntry: () -> Unit,
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
     addViewModel: AddViewModel = viewModel(factory = PenyediaViewModel.Factory),
