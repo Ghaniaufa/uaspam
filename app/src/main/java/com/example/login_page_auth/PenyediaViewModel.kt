@@ -19,11 +19,9 @@ object PenyediaViewModel {
             AddViewModel(aplikasiPet().container.petRepositori)
         }
         initializer {
-            DetailViewModel(
-                createSavedStateHandle(),
-                aplikasiPet().container.petRepositori
-            )
+            DetailViewModel(aplikasiPet().container.petRepositori)
         }
+
     }
 
 
