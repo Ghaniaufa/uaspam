@@ -2,12 +2,18 @@ package com.example.login_page_auth.navigation
 
 import AddScreen
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.login_page_auth.ui.auth.MainScreen
+import com.example.login_page_auth.ui.detail.DetailDestination
+import com.example.login_page_auth.ui.detail.DetailScreen
 import com.example.login_page_auth.ui.home.HomeScreen
 import com.example.login_page_auth.ui.login.IgViewModel
 import com.example.login_page_auth.ui.login.LoginScreen
@@ -21,7 +27,7 @@ sealed class DestinationScreen(val route: String) {
     object AllData: DestinationScreen("all")
     object Product: DestinationScreen("product")
 
-    
+
 
 }
 @Composable
@@ -38,7 +44,7 @@ fun PengelolaHalaman (navController: NavHostController = rememberNavController()
             LoginScreen(navController , viewModel )
         }
         composable(DestinationScreen.Home.route){
-            HomeScreen(navController, )
+            HomeScreen(navController, viewModel)
         }
         composable(DestinationScreen.AddData.route){
             AddScreen(navigateBack = {navController.popBackStack()})
