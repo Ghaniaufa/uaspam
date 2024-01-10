@@ -17,6 +17,10 @@ sealed class DestinationScreen(val route: String) {
     object Login: DestinationScreen("login")
     object Home: DestinationScreen("home")
     object AddData: DestinationScreen("add")
+
+    object AllData: DestinationScreen("all")
+    object Product: DestinationScreen("product")
+
     
 
 }
