@@ -44,8 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.login_page_auth.R
-import com.example.login_page_auth.navigation.DestinasiNavigasi
-import com.example.login_page_auth.navigation.DestinationScreen
+
 
 
 

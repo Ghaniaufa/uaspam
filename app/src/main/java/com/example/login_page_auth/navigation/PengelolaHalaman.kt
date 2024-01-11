@@ -5,11 +5,16 @@ import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.login_page_auth.ui.auth.MainScreen
+import com.example.login_page_auth.ui.detail.DetailDestination
+import com.example.login_page_auth.ui.detail.DetailDestination.petId
 import com.example.login_page_auth.ui.detail.DetailScreen
+import com.example.login_page_auth.ui.edit.EditDestination
 import com.example.login_page_auth.ui.list.ListScreen
 import com.example.login_page_auth.ui.edit.EditScreen
 import com.example.login_page_auth.ui.home.HomeScreen
@@ -17,18 +22,11 @@ import com.example.login_page_auth.ui.login.IgViewModel
 import com.example.login_page_auth.ui.login.LoginScreen
 import com.example.login_page_auth.ui.product.ProductScreen
 
-sealed class DestinationScreen(val route: String) {
-    object Main: DestinationScreen("main")
-    object Login: DestinationScreen("login")
-    object Home: DestinationScreen("home")
-    object AddData: DestinationScreen("add")
-
-    object AllData: DestinationScreen("all")
-    object Product: DestinationScreen("product")
 
 
 
-}
+
+
 @Composable
 fun PengelolaHalaman (navController: NavController = rememberNavController()){
     val viewModel = hiltViewModel<IgViewModel>()
@@ -42,7 +40,7 @@ fun PengelolaHalaman (navController: NavController = rememberNavController()){
             MainScreen(navController, viewModel)
         }
         composable("LoginPage") {
-           LoginScreen(navController , viewModel )
+            LoginScreen(navController , viewModel )
         }
         composable("HomeScreen") {
             HomeScreen(navController)
@@ -54,7 +52,7 @@ fun PengelolaHalaman (navController: NavController = rememberNavController()){
         composable("AllDataPet"){
             ListScreen(
                 navigateBack = {navController.popBackStack()},
-                navigateToItemEntry = { /*TODO*/ },
+                navigateToItemEntry = {navController.navigate("DetailScreen")},
                 navController = navController
             )
         }
@@ -64,14 +62,32 @@ fun PengelolaHalaman (navController: NavController = rememberNavController()){
                 navigateBack = {navController.popBackStack()})
         }
         composable("EditScreen"){
-           EditScreen(
-               navigateBack = {navController.popBackStack()}, navController = navController )
+            EditScreen(
+                navigateBack = {navController.popBackStack()}, navController = navController )
 
         }
-        composable("DetailScreen"){
-            DetailScreen(
-                navController = navController,
-                navigateBack = { navController.popBackStack()})
+        composable("DetailScreen/{$petId}") { backStackEntry ->
+            val petId = backStackEntry.arguments?.getString(DetailDestination.petId)
+            petId?.let {
+                DetailScreen(
+                    navigateToEditItem = { navController.navigate("${EditDestination.route}/$petId") },
+                    navigateBack = { navController.popBackStack() },
+                    )
+            }
+        }
+
+        composable(route = DetailDestination.routeWithArgs,
+                   arguments = listOf(navArgument(DetailDestination.petId) {
+                       type = NavType.StringType
+                   })
+        ){ backStackEntry ->
+            val petId = backStackEntry.arguments?.getString(DetailDestination.petId)
+            petId?.let {
+                DetailScreen(
+                    navigateToEditItem = { navController.navigate("${EditDestination.route}/$petId") },
+                    navigateBack = { navController.popBackStack() },
+                    )
+            }
         }
     }
 }

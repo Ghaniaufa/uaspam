@@ -34,6 +34,7 @@ import com.example.login_page_auth.PenyediaViewModel
 import com.example.login_page_auth.PetTopAppBar
 import com.example.login_page_auth.model.Pet
 import com.example.login_page_auth.navigation.DestinasiNavigasi
+import com.example.login_page_auth.ui.detail.DetailDestination
 
 object ListDestination : DestinasiNavigasi {
     override val route = "item_details"
@@ -48,7 +49,7 @@ fun ListScreen(
     navigateBack: () -> Unit,
     navigateToItemEntry: () -> Unit,
     modifier: Modifier = Modifier,
-    navController : NavController,
+    navController: NavController,
     viewModel: ListViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
@@ -65,12 +66,12 @@ fun ListScreen(
     ) { innerPadding ->
         val uiStatePet by viewModel.homeUIState.collectAsState()
         BodyDetailScreen(
-            itemPet = uiStatePet.listPet,
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize(),
-            onPetClick = { navController.navigate("EditScreen") }
-        )
+        itemPet = uiStatePet.listPet,
+        modifier = Modifier
+            .padding(innerPadding)
+            .fillMaxSize(),
+        onPetClick = { petId -> navController.navigate("${DetailDestination.route}/$petId") }
+    )
     }
 }
 @Composable
@@ -104,8 +105,8 @@ fun BodyDetailScreen(
 fun ListDataPet(
     itemPet: List<Pet>,
     modifier: Modifier = Modifier,
-    onItemClick: (Pet) -> Unit
-    ) {
+    onItemClick: (Pet) -> Unit,
+) {
         LazyColumn(
             modifier = modifier
         ) {
@@ -114,7 +115,7 @@ fun ListDataPet(
                     pet = pet,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { onItemClick(pet) }
+                        .clickable { onItemClick(pet) },
                 )
                 Spacer(modifier = Modifier.padding(8.dp))
             }
@@ -124,7 +125,7 @@ fun ListDataPet(
 @Composable
 fun DataPet(
     pet: Pet,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Card(
         modifier = modifier,

@@ -51,10 +51,10 @@ object DetailDestination : DestinasiNavigasi {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(
-    navController: NavController,
+    navigateToEditItem: (String) -> Unit,
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory),
 ){
     val uiState = viewModel.uiState.collectAsState()
     val coroutineScope = rememberCoroutineScope()
@@ -67,7 +67,7 @@ fun DetailScreen(
             )
         }, floatingActionButton = {
             FloatingActionButton(
-                onClick = { navController.navigate(uiState.value.addPet.id) },
+                onClick = { navigateToEditItem(uiState.value.addPet.id) },
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(18.dp)
             ) {
