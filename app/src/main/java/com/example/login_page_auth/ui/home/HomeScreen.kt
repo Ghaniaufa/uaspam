@@ -17,6 +17,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -54,17 +56,17 @@ fun HomeScreen(navController: NavController) {
             .fillMaxSize()
             .padding(16.dp)
       ) {
-         SmallCard1(navController = navController, title = "Pet Hotel" , )
+         SmallCard1(navController = navController, title = "Pet Hotel")
 
          Spacer(modifier = Modifier.height(16.dp))
          // Large card at the top
-         SmallCard2(navController = navController, title = "Pet Hotel")
+         SmallCard2(navController = navController, title = "Data Penitipan")
 
 
          // Spacer between large card and small cards
          Spacer(modifier = Modifier.height(16.dp))
 
-         SmallCard3(navController = navController, title = "All Pet Data")
+         SmallCard3(navController = navController, title = "Data Product")
          // Two small cards below, arranged horizontally
          Row(
             modifier = Modifier
@@ -85,6 +87,9 @@ fun SmallCard1(navController: NavController, title: String) {
    Card(
       modifier = Modifier
          .padding(end = 8.dp), // Adjusted padding here
+      colors = CardDefaults.cardColors(
+         containerColor = Color(255, 122, 122, 255)
+      )
    ) {
       Column(
          modifier = Modifier
@@ -99,11 +104,11 @@ fun SmallCard1(navController: NavController, title: String) {
             .height(16.dp))
          Button(
             colors = ButtonDefaults.buttonColors(
-               Color(255, 122, 122, 255)
+               Color(241, 1, 1, 255)
             ),
             onClick = { navController.navigate("PetHotelScreen") }
          ) {
-            Text(text = "All Pet Data")
+            Text(text = "Titip Disini")
          }
       }
    }
@@ -112,9 +117,12 @@ fun SmallCard1(navController: NavController, title: String) {
 fun SmallCard2(navController: NavController, title: String) {
    Card(
       modifier = Modifier
-
          .fillMaxWidth()
-         .padding(end = 8.dp), // Adjusted padding here
+         .padding(end = 8.dp),
+      colors = CardDefaults.cardColors(
+         containerColor = Color(255, 122, 122, 255)
+      )
+      // Adjusted padding here
    ) {
       Column(
          modifier = Modifier
@@ -127,11 +135,11 @@ fun SmallCard2(navController: NavController, title: String) {
          Spacer(modifier = Modifier.height(16.dp))
          Button(
             colors = ButtonDefaults.buttonColors(
-               Color(255, 122, 122, 255)
+               Color(241, 1, 1, 255)
             ),
             onClick = { navController.navigate("AllDataPet") }
          ) {
-            Text(text = "All Pet Data")
+            Text(text = "Lihat")
          }
       }
    }
@@ -142,7 +150,11 @@ fun SmallCard3(navController: NavController, title: String) {
    Card(
       modifier = Modifier
          .fillMaxWidth()
-         .padding(end = 8.dp), // Adjusted padding here
+         .padding(end = 8.dp),
+         colors = CardDefaults.cardColors(
+         containerColor = Color(255, 122, 122, 255)
+      )
+      // Adjusted padding here
    ) {
       Column(
          modifier = Modifier
@@ -155,11 +167,11 @@ fun SmallCard3(navController: NavController, title: String) {
          Spacer(modifier = Modifier.height(16.dp))
          Button(
             colors = ButtonDefaults.buttonColors(
-               Color(255, 122, 122, 255)
+               Color(241, 1, 1, 255)
             ),
             onClick = { navController.navigate("Product") }
          ) {
-            Text(text = "Product Pet Care")
+            Text(text = "Cek Product")
          }
       }
    }
