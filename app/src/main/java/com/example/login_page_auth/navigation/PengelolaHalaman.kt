@@ -21,20 +21,18 @@ import com.example.login_page_auth.ui.home.HomeScreen
 import com.example.login_page_auth.ui.login.IgViewModel
 import com.example.login_page_auth.ui.login.LoginScreen
 import com.example.login_page_auth.ui.product.ProductScreen
-
-
-
-
+import com.google.firebase.auth.FirebaseAuth
 
 
 @Composable
-fun PengelolaHalaman (navController: NavController = rememberNavController()){
+fun PengelolaHalaman (navController: NavController = rememberNavController(),isLoggedIn: Boolean){
     val viewModel = hiltViewModel<IgViewModel>()
+
 
 
     NavHost(
         navController = navController as NavHostController,
-        startDestination = "MainScreen"
+        startDestination = if (isLoggedIn)"HomeScreen" else "MainScreen"
     ) {
         composable("MainScreen") {
             MainScreen(navController, viewModel)

@@ -18,12 +18,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.example.login_page_auth.navigation.PengelolaHalaman
+import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PetApp(
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+    val isLoggedIn = FirebaseAuth.getInstance().currentUser!=null
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
 
@@ -33,7 +35,7 @@ fun PetApp(
                 .fillMaxSize()
                 .padding(it)
         ) {
-            PengelolaHalaman()
+            PengelolaHalaman(isLoggedIn = isLoggedIn)
 
         }
     }

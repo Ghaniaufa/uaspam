@@ -51,13 +51,7 @@ fun HomeScreen(navController: NavController) {
 
          Spacer(modifier = Modifier.height(16.dp))
          // Large card at the top
-         SmallCard2(navController = navController, title = "Data Penitipan")
 
-
-         // Spacer between large card and small cards
-         Spacer(modifier = Modifier.height(16.dp))
-
-         SmallCard3(navController = navController, title = "Data Product")
          // Two small cards below, arranged horizontally
          Row(
             modifier = Modifier
@@ -65,8 +59,13 @@ fun HomeScreen(navController: NavController) {
                .padding(top = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween
          ) {
+            SmallCard2(navController = navController, title = "Data Penitipan")
 
 
+            // Spacer between large card and small cards
+            Spacer(modifier = Modifier.height(16.dp))
+
+            SmallCard3(navController = navController, title = "Data Product")
 
          }
       }
@@ -108,7 +107,7 @@ fun SmallCard1(navController: NavController, title: String) {
 fun SmallCard2(navController: NavController, title: String) {
    Card(
       modifier = Modifier
-         .fillMaxWidth()
+         .fillMaxWidth(0.5f)
          .padding(end = 8.dp),
       colors = CardDefaults.cardColors(
          containerColor = Color(255, 122, 122, 255)
