@@ -17,11 +17,10 @@ import com.example.login_page_auth.ui.detail.DetailScreen
 import com.example.login_page_auth.ui.edit.EditDestination
 import com.example.login_page_auth.ui.list.ListScreen
 import com.example.login_page_auth.ui.edit.EditScreen
+import com.example.login_page_auth.ui.groooming.GroomingScreen
 import com.example.login_page_auth.ui.home.HomeScreen
 import com.example.login_page_auth.ui.login.IgViewModel
 import com.example.login_page_auth.ui.login.LoginScreen
-import com.example.login_page_auth.ui.product.ProductScreen
-import com.google.firebase.auth.FirebaseAuth
 
 
 @Composable
@@ -41,7 +40,7 @@ fun PengelolaHalaman (navController: NavController = rememberNavController(),isL
             LoginScreen(navController , viewModel )
         }
         composable("HomeScreen") {
-            HomeScreen(navController)
+            HomeScreen(navController = navController)
         }
         composable("PetHotelScreen"){
             AddScreen(
@@ -55,8 +54,7 @@ fun PengelolaHalaman (navController: NavController = rememberNavController(),isL
             )
         }
         composable("Product"){
-            ProductScreen(
-                navigateToItemEntry = { /*TODO*/ },
+            GroomingScreen(
                 navigateBack = {navController.popBackStack()})
         }
         composable("EditScreen/{$petId}"){

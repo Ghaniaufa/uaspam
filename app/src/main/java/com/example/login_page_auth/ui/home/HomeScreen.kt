@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -31,7 +32,9 @@ import androidx.navigation.NavController
 
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(
+   navController: NavController,
+   ){
    // Set background color for the entire screen
    Box(
 
@@ -46,6 +49,7 @@ fun HomeScreen(navController: NavController) {
 
             .fillMaxSize()
             .padding(16.dp)
+
       ) {
          SmallCard1(navController = navController, title = "Pet Hotel")
 
@@ -59,14 +63,33 @@ fun HomeScreen(navController: NavController) {
                .padding(top = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween
          ) {
+
             SmallCard2(navController = navController, title = "Data Penitipan")
 
 
             // Spacer between large card and small cards
             Spacer(modifier = Modifier.height(16.dp))
 
-            SmallCard3(navController = navController, title = "Data Product")
+            SmallCard3(navController = navController, title = "List Grooming")
 
+            // Spacer between small cards and button
+
+
+         }
+         Spacer(modifier = Modifier
+            .height(16.dp)
+         )
+
+         // Button below the small cards
+         Button(
+            onClick = { navController.navigate("MainScreen")
+
+            },
+            modifier = Modifier
+               .fillMaxWidth()
+               .width(25.dp)
+         ) {
+            Text(text = "LogOut")
          }
       }
    }
@@ -161,7 +184,7 @@ fun SmallCard3(navController: NavController, title: String) {
             ),
             onClick = { navController.navigate("Product") }
          ) {
-            Text(text = "Cek Product")
+            Text(text = "Cek Disini")
          }
       }
    }
