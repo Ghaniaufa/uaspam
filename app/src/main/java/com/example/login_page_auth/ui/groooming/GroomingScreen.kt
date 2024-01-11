@@ -1,5 +1,6 @@
 package com.example.login_page_auth.ui.groooming
 
+import android.annotation.SuppressLint
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -19,6 +20,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -35,6 +37,7 @@ import com.example.login_page_auth.PetTopAppBar
 import com.example.login_page_auth.R
 import com.example.login_page_auth.ui.detail.DetailDestination
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GroomingScreen(
@@ -45,21 +48,28 @@ fun GroomingScreen(
     // Dummy data untuk contoh
     val groomingItems = listOf(
         GroomingItem("Grooming Paket Murah", "Grooming, Potong Kuku", R.drawable.g1),
-        GroomingItem("Grooming Extra", "Grooming, Potong Kuku, ", R.drawable.g1),
+        GroomingItem("Grooming Extra", "Grooming, Potong Kuku, dan Potong Rmabut", R.drawable.g1),
         // Tambahkan data GroomingItem lainnya sesuai kebutuhan
     )
-    PetTopAppBar(
-        title = DetailDestination.titleRes ,
-        canNavigateBack = true,
-        navigateUp = navigateBack
-    )
-    LazyColumn(
+    Scaffold(
+        topBar = {
+            PetTopAppBar(
+                title = "Grooming Kit",
+                canNavigateBack = true,
+                scrollBehavior = scrollBehavior,
+                navigateUp = navigateBack
+            )
+        },
         modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp)
     ) {
-        items(groomingItems) { groomingItem ->
-            GroomingCard(groomingItem = groomingItem)
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(40.dp)
+        ) {
+            items(groomingItems) { groomingItem ->
+                GroomingCard(groomingItem = groomingItem)
+            }
         }
     }
 }
@@ -69,16 +79,15 @@ fun GroomingCard(groomingItem: GroomingItem) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(30.dp),
         shape = RoundedCornerShape(15.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color(255, 255, 255, 255)
+            containerColor = Color(145, 107, 120, 255)
         )
 
     ) {
         Column(
             modifier = Modifier
-                .clickable { /* Tambahkan aksi klik jika diperlukan */ }
                 .padding(16.dp)
         ) {
             // Gambar Grooming
