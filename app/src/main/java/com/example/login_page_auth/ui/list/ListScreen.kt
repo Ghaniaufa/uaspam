@@ -1,6 +1,5 @@
 package com.example.login_page_auth.ui.list
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -62,8 +61,7 @@ fun ListScreen(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             PetTopAppBar(
-                title = "List Data Penitipan",
-
+                title = "Pet",
                 canNavigateBack = true,
                 scrollBehavior = scrollBehavior,
                 navigateUp = navigateBack,
@@ -78,7 +76,6 @@ fun ListScreen(
             .fillMaxSize(),
         onPetClick = { petId -> navController.navigate("${DetailDestination.route}/$petId") }
     )
-
     }
 }
 @Composable
@@ -90,7 +87,6 @@ fun BodyDetailScreen(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
-            .background(Color(255, 206, 206, 255))
     ) {
         if (itemPet.isEmpty()) {
             Text(
@@ -122,7 +118,6 @@ fun ListDataPet(
                 DataPet(
                     pet = pet,
                     modifier = Modifier
-
                         .fillMaxWidth()
                         .clickable { onItemClick(pet) },
                 )
@@ -137,14 +132,11 @@ fun DataPet(
     modifier: Modifier = Modifier,
 ) {
     Card(
-        modifier = modifier.padding(15.dp),
 
-        colors = CardDefaults.cardColors(
-            containerColor = Color(255, 122, 122, 255)
-        ),
-
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-
+        modifier = modifier.padding(10.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                colors = CardDefaults.cardColors(
+                containerColor = Color(255, 122, 122, 255))
     ) {
         Column(
             modifier = Modifier.padding(12.dp),
@@ -154,7 +146,7 @@ fun DataPet(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "Nama Hewan: " + pet.namapet,color = Color.White, fontSize = 19.sp, fontWeight = FontWeight.Bold,
+                    text = " Nama Hewan : " + pet.namapet,fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White,
                     style = MaterialTheme.typography.titleLarge,
                 )
                 Spacer(Modifier.weight(1f))
@@ -163,12 +155,12 @@ fun DataPet(
                     contentDescription = null,
                 )
                 Text(
-                    text = pet.telpon, color = Color.White, fontSize = 15.sp,fontWeight = FontWeight.Bold,
+                    text = pet.telpon,fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White,
                     style = MaterialTheme.typography.titleMedium
                 )
             }
             Text(
-                text = "Jenis Pet : " + pet.jenispet,color = Color.White, fontSize = 15.sp,fontWeight = FontWeight.Bold,
+                text = "Jenis Hewan : " +pet.jenispet, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White,
                 style = MaterialTheme.typography.titleMedium
             )
         }
