@@ -9,7 +9,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.login_page_auth.ui.auth.MainScreen
-import com.example.login_page_auth.ui.list.DetailScreen
+import com.example.login_page_auth.ui.detail.DetailScreen
+import com.example.login_page_auth.ui.list.ListScreen
 import com.example.login_page_auth.ui.edit.EditScreen
 import com.example.login_page_auth.ui.home.HomeScreen
 import com.example.login_page_auth.ui.login.IgViewModel
@@ -51,7 +52,7 @@ fun PengelolaHalaman (navController: NavController = rememberNavController()){
                 navigateBack = {navController.popBackStack()})
         }
         composable("AllDataPet"){
-            DetailScreen(
+            ListScreen(
                 navigateBack = {navController.popBackStack()},
                 navigateToItemEntry = { /*TODO*/ },
                 navController = navController
@@ -66,6 +67,11 @@ fun PengelolaHalaman (navController: NavController = rememberNavController()){
            EditScreen(
                navigateBack = {navController.popBackStack()}, navController = navController )
 
+        }
+        composable("DetailScreen"){
+            DetailScreen(
+                navController = navController,
+                navigateBack = { navController.popBackStack()})
         }
     }
 }

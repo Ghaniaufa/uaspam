@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.stateIn
     object Loading : PetUIState()
 }
 
-class DetailViewModel(private val petRepositori: PetRepositori) : ViewModel() {
+class ListViewModel(private val petRepositori: PetRepositori) : ViewModel() {
 
     companion object {
         private const val TIMEOUT_MILLIS = 5_000L

@@ -35,21 +35,21 @@ import com.example.login_page_auth.PetTopAppBar
 import com.example.login_page_auth.model.Pet
 import com.example.login_page_auth.navigation.DestinasiNavigasi
 
-object DetailDestination : DestinasiNavigasi {
+object ListDestination : DestinasiNavigasi {
     override val route = "item_details"
-    override val titleRes = "Detail Pet"
+    override val titleRes = "List Pet"
     const val petId = "itemId"
     val routeWithArgs = "$route/{$petId}"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(
+fun ListScreen(
     navigateBack: () -> Unit,
     navigateToItemEntry: () -> Unit,
     modifier: Modifier = Modifier,
     navController : NavController,
-    viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: ListViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
