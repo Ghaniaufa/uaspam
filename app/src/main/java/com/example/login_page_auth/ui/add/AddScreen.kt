@@ -1,6 +1,7 @@
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
@@ -113,26 +114,35 @@ fun FormInput(
             value = addPet.namapet,
             onValueChange = { onValueChange(addPet.copy(namapet = it)) },
             label = { Text("Nama Hewan") },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
             enabled = enabled,
-            singleLine = true
+            singleLine = true,
+            shape = MaterialTheme.shapes.medium,
         )
         OutlinedTextField(
             value = addPet.jenispet,
             onValueChange = { onValueChange(addPet.copy(jenispet = it)) },
             label = { Text("Jenis Hewan") },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
             enabled = enabled,
-            singleLine = true
+            singleLine = true,
+            shape = MaterialTheme.shapes.medium,
         )
         OutlinedTextField(
             value = addPet.telpon,
             onValueChange = { onValueChange(addPet.copy(telpon = it)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             label = { Text(text = "Telpon") },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
             enabled = enabled,
-            singleLine = true
+            singleLine = true,
+            shape = MaterialTheme.shapes.medium,
         )
 
     }
