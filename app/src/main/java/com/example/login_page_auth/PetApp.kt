@@ -11,12 +11,15 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarDefaults.enterAlwaysScrollBehavior
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.text.font.FontWeight
 import com.example.login_page_auth.navigation.PengelolaHalaman
 import com.google.firebase.auth.FirebaseAuth
 
@@ -50,8 +53,12 @@ fun PetTopAppBar(
     scrollBehavior: TopAppBarScrollBehavior? = null,
     navigateUp: () -> Unit = {}
 ) {
-    CenterAlignedTopAppBar(title = { Text(title) },
+    CenterAlignedTopAppBar(title = { Text(title, fontWeight = FontWeight.Bold, color = Color.White) },
         modifier = modifier,
+
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+            containerColor = Color(255, 122, 122, 255)
+        ),
         scrollBehavior = scrollBehavior,
         navigationIcon = {
             if (canNavigateBack) {
