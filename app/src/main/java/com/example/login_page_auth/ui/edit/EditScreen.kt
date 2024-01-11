@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.login_page_auth.PenyediaViewModel
 import com.example.login_page_auth.PetTopAppBar
 import com.example.login_page_auth.navigation.DestinasiNavigasi
@@ -27,7 +28,7 @@ object EditDestination : DestinasiNavigasi {
 @Composable
 fun EditScreen(
     navigateBack: () -> Unit,
-    onNavigateUp: () -> Unit,
+    navController: NavController,
     modifier: Modifier = Modifier,
     viewModel: EditViewModel = viewModel(factory = PenyediaViewModel.Factory )
 ){
@@ -38,7 +39,7 @@ fun EditScreen(
             PetTopAppBar(
                 title = EditDestination.titleRes ,
                 canNavigateBack = true,
-                navigateUp = onNavigateUp
+                navigateUp = { navController.navigate("EditScreen") }
             )
         },
         modifier = modifier
