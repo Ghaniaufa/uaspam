@@ -15,6 +15,7 @@ import androidx.navigation.navArgument
 import com.example.login_page_auth.ui.auth.MainScreen
 import com.example.login_page_auth.ui.detail.DetailDestination
 import com.example.login_page_auth.ui.detail.DetailScreen
+import com.example.login_page_auth.ui.edit.EditScreen
 import com.example.login_page_auth.ui.home.HomeScreen
 import com.example.login_page_auth.ui.login.IgViewModel
 import com.example.login_page_auth.ui.login.LoginScreen
@@ -63,7 +64,14 @@ fun PengelolaHalaman (navController: NavController = rememberNavController()){
             )
         }
         composable("Product"){
-            ProductScreen(navigateToItemEntry = { /*TODO*/ }, navigateBack = {navController.popBackStack()})
+            ProductScreen(
+                navigateToItemEntry = { /*TODO*/ },
+                navigateBack = {navController.popBackStack()})
+        }
+        composable("EditScreen"){
+            EditScreen(
+                navigateBack = {navController.popBackStack()},
+                onNavigateUp = )
         }
     }
 }
