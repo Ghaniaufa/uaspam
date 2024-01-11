@@ -21,6 +21,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,6 +31,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.login_page_auth.PetTopAppBar
 import com.example.login_page_auth.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,25 +40,19 @@ fun GroomingScreen(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     // Dummy data untuk contoh
     val groomingItems = listOf(
         GroomingItem("Grooming Paket Murah", "Grooming, Potong Kuku", R.drawable.g1),
         GroomingItem("Grooming Extra", "Grooming, Potong Kuku, ", R.drawable.g1),
         // Tambahkan data GroomingItem lainnya sesuai kebutuhan
     )
-    TopAppBar(
-        title = { Text(text = "Grooming Screen") },
-        navigationIcon = {
-            IconButton(onClick = { navigateBack() }) {
-                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back")
-            }
-        },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
+    PetTopAppBar(
+        title = "Pet",
+        canNavigateBack = true,
+        scrollBehavior = scrollBehavior,
+        navigateUp = navigateBack
     )
-
-
     LazyColumn(
         modifier = modifier
             .fillMaxSize()

@@ -61,6 +61,7 @@ fun ListScreen(
                 title = "Pet",
                 canNavigateBack = true,
                 scrollBehavior = scrollBehavior,
+                navigateUp = navigateBack
             )
         },
     ) { innerPadding ->
