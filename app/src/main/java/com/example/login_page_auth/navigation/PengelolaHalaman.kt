@@ -61,9 +61,10 @@ fun PengelolaHalaman (navController: NavController = rememberNavController()){
                 navigateToItemEntry = { /*TODO*/ },
                 navigateBack = {navController.popBackStack()})
         }
-        composable("EditScreen"){
+        composable("EditScreen/{$petId}"){
             EditScreen(
-                navigateBack = {navController.popBackStack()}, navController = navController )
+                navigateBack = {navController.popBackStack()},
+                onNavigateUp = {navController.navigate("${EditDestination.route}/$petId")})
 
         }
         composable("DetailScreen/{$petId}") { backStackEntry ->
@@ -76,7 +77,8 @@ fun PengelolaHalaman (navController: NavController = rememberNavController()){
             }
         }
 
-        composable(route = DetailDestination.routeWithArgs,
+        composable(
+            route = DetailDestination.routeWithArgs,
                    arguments = listOf(navArgument(DetailDestination.petId) {
                        type = NavType.StringType
                    })
@@ -88,6 +90,21 @@ fun PengelolaHalaman (navController: NavController = rememberNavController()){
                     navigateBack = { navController.popBackStack() },
                     )
             }
+        }
+        composable(
+            route = EditDestination.routeWithArgs,
+            arguments = listOf(navArgument(EditDestination.petId){
+                type  = NavType.StringType
+            })
+        ) { backStackEntry ->
+            val petId = backStackEntry.arguments?.getString(EditDestination.petId)
+            petId?.let {
+                EditScreen(
+                    navigateBack = { navController.popBackStack() },
+                    onNavigateUp = {navController.navigateUp()}
+                )
+            }
+
         }
     }
 }

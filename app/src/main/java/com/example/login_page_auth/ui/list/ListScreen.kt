@@ -60,7 +60,7 @@ fun ListScreen(
             PetTopAppBar(
                 title = "Pet",
                 canNavigateBack = true,
-                scrollBehavior = scrollBehavior
+                scrollBehavior = scrollBehavior,
             )
         },
     ) { innerPadding ->

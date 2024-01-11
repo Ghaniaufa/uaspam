@@ -21,6 +21,7 @@ object EditDestination : DestinasiNavigasi {
     override val route = "item_edit"
     override val titleRes = "Edit Pet"
     const val petId = "itemtId"
+    val routeWithArgs = "${EditDestination.route}/{$petId}"
 
 }
 
@@ -28,7 +29,7 @@ object EditDestination : DestinasiNavigasi {
 @Composable
 fun EditScreen(
     navigateBack: () -> Unit,
-    navController: NavController,
+    onNavigateUp: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: EditViewModel = viewModel(factory = PenyediaViewModel.Factory )
 ){
@@ -39,7 +40,7 @@ fun EditScreen(
             PetTopAppBar(
                 title = EditDestination.titleRes ,
                 canNavigateBack = true,
-                navigateUp = { navController.navigate("EditScreen") }
+                navigateUp = onNavigateUp
             )
         },
         modifier = modifier
